@@ -1,98 +1,10 @@
-# 
-
-## Shortcut Commands
-
-- Press F5 to execute statement.
-
-## Restore Database 
-
-- Locate the `.bak` file (database).
-- In MSSQL, right click databases and restore database.
-
-## Check Connection Name and SQL Server
-
-```sql
--- View the Current Connection Name
-SELECT @@SERVERNAME;
-
--- View the Installed Version of Microsoft SQL
-SELECT @@VERSION;
-```
-
-# SELECT Statement
-
-### SELECT
-
-```sql
--- SELECT Statemenet
--- Syntax: SELECT * FROM DatabaseName.SchemaName.TableName
-SELECT * FROM Person.Password;
-SELECT * FROM Person.Person;
-
--- SELECT specific columns
-SELECT BusinessEntityID, FirstName, MiddleName, LastName FROM Person.Person;
-
--- All rows in one column become 'FirstName'
-SELECT 'FirstName' From Person.Person;
-```
-
-### SELECT DISTINCT
-
-```sql
--- SELECT DISTINCT statement
--- Select Unique Records
--- Syntax: SELECT DISTINCT From Col1, Col2 FROM SchemaName.TableName
-SELECT DISTINCT JobTitle FROM HumanResources.Employee;
-SELECT DISTINCT OrganizationLevel FROM HumanResources.Employee;
-SELECT DISTINCT Title, Suffix FROM Person.Person;
-```
-
-### CASE with SELECT
-
-- The `CASE` expression goes through conditions and returns a value when the first condition is met (like an if-then-else statement).
-- When condition is true, it stops reading and returns the result. 
-- If there is no `ELSE` part and no conditions aree true, it returns `NULL`.
-
-```sql
--- Case with SELECT
--- Syntax: CASE(expression1, value1, expression2, value2, ... expressionN, valueN)
-Select NationalIDNumber, HireDate, VacationHours,
--- FROM HumanResources.Employee;
-CASE
-WHEN VacationHours > 70 THEN 'Vacation hours over limit'
-WHEN VacationHours BETWEEN 40 and 70 THEN 'Vacation hours average' -- inclusive
-ELSE 'Vacation houors within limit'
-END AS VacationHourLimit
-FROM HumanResources.Employee;
-```
-
-# Filter the Records
-
-- `WHERE`, `AND`, `OR`, `NOT`, `CONCAT()`, `CONCAT_WS()`, `IS NULL`, `IS NOT NULL`, `BETWEEN`, `NOT BETWEEN`, `CAST`, `IN`, `NOT IN`
-
-### `WHERE` Clause
-
-```sql
 -- WHERE Clause
 SELECT BusinessEntityID, NationalIDNumber, BirthDate
 FROM HumanResources.Employee
 -- WHERE MaritalStatus = 'S';
 -- WHERE BirthDate > '1985-01-20';
 WHERE year(BirthDate) > '1985';
-```
 
-### Comparison Operators in `WHERE`
-
-|Comparison Operators|Description|
-|:-:|:-:|
-|`=`|Equal To|
-|`<>` or `!=`|Not Equal To|
-|`>`|Greather Than|
-|`>=`|Greater Than or Equal To|
-|`<`|Less Than|
-|`<=`|Less Than or Equal To|
-
-```sql
 -- Comparison Operators in WHERE
 SELECT StateProvinceID, StateProvinceCode, CountryRegionCode
 FROM Person.StateProvince
@@ -101,11 +13,7 @@ FROM Person.StateProvince
 -- WHERE StateProvinceCode <> CountryRegionCode;
 -- WHERE StateProvinceID <= 30;
 WHERE StateProvinceID >= 30;
-```
 
-### Arithmetic Operators in `WHERE`
-
-```sql
 -- Arithmetic Operators
 - +, -, *, /
 SELECT StandardCost, ListPrice, StandardCost + ListPrice AS SumListPriceCost -- used alias
@@ -118,11 +26,7 @@ SELECT ProductID, Name, ReorderPoint, StandardCost
 FROM Production.Product
 -- WHERE ReorderPoint * StandardCost > 3
 WHERE ReorderPoint / StandardCost > 3 AND StandardCost <> 0; -- ensure StandardCost is not 0, otherwise will have error
-```
 
-### Logical Operators
-
-```sql
 -- Logical Operators
 -- AND, OR, NOT
 SELECT ProductID, Name, StandardCost, ListPrice, SafetyStockLevel 
@@ -138,11 +42,7 @@ SELECT ProductID, Name
 FROM Production.Product
 -- WHERE NOT ProductID = 4;
 WHERE NOT Name = 'Adjustable Price';
-```
 
-### Concatenation Operator in WHERE and SELECT (`+`, `concat()`, `concat_ws()`)
-
-```sql
 -- Concatenation Operator in WHERE and SELECT
 -- '+' operator to combine strings
 -- If there are NULL values, the concatenation will be NULL.
@@ -166,11 +66,7 @@ SELECT FirstName, BusinessEntityID,
 			CONCAT_WS('.','adventure-works','com')) AS PersonEmail,
 		CONCAT_WS('.', 'adventure-works', 'com') AS domain -- adventure-works.com
 FROM Person.Person;
-```
 
-### NULL value (`IS NULL`, `IS NOT NULL`)
-
-```sql
 -- NULL value in WHERE
 -- `IS NULL`: Has missing value
 -- `IS NOT NULL`: Does not have missing values
@@ -178,11 +74,7 @@ SELECT ProductId, Name, Color
 FROM Production.Product
 -- WHERE Color IS NULL;
 WHERE Color IS NOT NULL;
-```
 
-### `BETWEEN` operator and `CAST`
-
-```sql
 -- BETWEEN operator in WHERE
 -- `BETWEEN`: To SELECT matching values within a range (inclusive)
 -- `NOT BETWEEN`: To SELECT matching values NOT within a range
@@ -213,11 +105,7 @@ SELECT CAST(1.834 AS INT); -- 1
 SELECT PurchaseOrderID, ModifiedDate
 FROM Purchasing.PurchaseOrderDetail
 WHERE CAST(ModifiedDate AS DATE) BETWEEN '2014-02-02' AND '2015-08-13';
-```
 
-### `IN` operator
-
-```sql
 -- IN operator in WHERE
 -- `IN`: SELECT matching values within a fixed set of values
 -- `NOT IN`: SELECT matching values NOT within a fixed set of values
@@ -228,7 +116,14 @@ WHERE ProductID IN (1, 10, 15, 20); -- "ProductId is 1 or 10 or 15 or 20"
 SELECT * FROM Person.StateProvince
 -- WHERE StateProvinceCode IN ('AK','AZ','CO','MB','IA'); -- only 5 outputs
 WHERE StateProvinceCode NOT IN ('AK','AZ','CO','MB','IA');
-```
+
+
+
+
+
+
+
+
 
 
 
