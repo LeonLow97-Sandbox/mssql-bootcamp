@@ -1,4 +1,6 @@
-# 
+# Udemy - Complete Microsoft SQL Server Masterclass : Beginner to Expert
+
+- [Udemy Course](https://www.udemy.com/course/complete-microsoft-sql-masterclass-beginner-advanced)
 
 ## Shortcut Commands
 
@@ -296,6 +298,16 @@ WHERE Name LIKE '%''%'; -- searching a record with single quote Hill's Bicycle S
 -- Single quote is a special character
 -- use another single quote to escape that special character '
 ```
+
+# `ORDER BY` and `GROUP BY` Clause
+
+### `ORDER BY`
+
+```sql
+
+```
+
+
 
 
 
