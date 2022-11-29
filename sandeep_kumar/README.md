@@ -395,6 +395,50 @@ FROM Sales.SalesOrderDetail
 ORDER BY OrderQty DESC;
 ```
 
+# `GROUP BY`
+
+- FROM -> WHERE -> GROUP BY -> SELECT -> ORDER BY
+
+```sql
+-- GROUP BY Clause
+-- To group the records per category
+SELECT SalesOrderID, OrderQty
+FROM Sales.SalesOrderDetail;
+
+-- GROUP BY with aggregate function sum()
+SELECT SalesOrderID, sum(OrderQty) as SumQty
+FROM Sales.SalesOrderDetail
+GROUP BY SalesOrderID; -- grouped based on this
+
+-- duplicate records for GroupName
+SELECT *
+FROM HumanResources.Department;
+
+SELECT GroupName
+FROM HumanResources.Department
+GROUP BY GroupName;
+
+SELECT GroupName, COUNT(groupName)
+FROM HumanResources.Department
+GROUP BY GroupName;
+
+SELECT GroupName, COUNT(*)
+FROM HumanResources.Department
+GROUP BY GroupName;
+
+-- GROUP BY with ORDER BY
+SELECT PayFrequency, SUM(Rate) AS TotalRatePerPayFrequency
+FROM HumanResources.EmployeePayHistory
+GROUP BY PayFrequency
+ORDER BY PayFrequency DESC;
+
+-- GROUP BY with 2 columns with ORDER BY 
+SELECT ProductID, Shelf, SUM(Quantity) AS SumPerProductPerShelf
+FROM Production.ProductInventory
+GROUP BY ProductID, Shelf
+ORDER BY Shelf DESC;
+```
+
 
 
 
