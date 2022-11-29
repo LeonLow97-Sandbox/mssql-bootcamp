@@ -6,6 +6,9 @@
 |`CONCAT_WS()`|Adds 2 or more strings toether with a separator.|
 |`LEN()`|Returns the length of a string.|
 |`SUM()`|Calculates the sum of a set of values.|
+|`avg()`|Calculates the average of numbers.|
+|`max()`, `min()`|To get the maximum and minimum values from all the records.|
 |`COUNT()`|returns the number of records returned by a select query.|
+
 
 
