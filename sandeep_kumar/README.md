@@ -439,6 +439,12 @@ GROUP BY ProductID, Shelf
 ORDER BY Shelf DESC;
 ```
 
+# `HAVING` Clause
+
+- Mostly used to filter the Records of aggregate function or Records where `GROUP BY` clause is used.
+- Order of Execution
+	- `SELECT --> FROM --> WHERE --> GROUP BY --> HAVING --> ORDER BY`
+
 
 
 

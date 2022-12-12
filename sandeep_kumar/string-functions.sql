@@ -22,6 +22,7 @@ SELECT FORMAT(20200616, '####-##-##'); -- 2020-06-16
 SELECT FORMAT(20200616, '####/##/##'); -- 2020/06/16
 
 -- LEFT(): select fixed number of characters from the left
+-- LEFT(MainString, Count)
 SELECT FirstName, LEFT(FirstName, 3) AS ExtractNameFromLeft
 FROM Person.Person;
 
@@ -46,7 +47,7 @@ SELECT LTRIM('          Trim Left Side');
 SELECT RTRIM('Trim Right Side      ');
 SELECT TRIM('    Trim Both The Sides     ');
 
--- |`patindex()`|Displays the position of the first occurrence of a pattern in input string.|
+-- patindex(): Displays the position of the first occurrence of a pattern in input string.
 SELECT NAME, PATINDEX('%Ball%', Name)
 FROM Production.Product
 WHERE NAME LIKE '%Ball%';
@@ -56,14 +57,30 @@ SELECT NAME, PATINDEX('%Cr_nk%', Name) -- "Crank"
 FROM Production.Product
 WHERE NAME LIKE '%Cr%';
 
--- |`replace()`|Replaces all occurrences of a substring by another substring inside the main string.|
+-- replace(): Replaces all occurrences of a substring by another substring inside the main string.
 SELECT LoginID, REPLACE(LoginID, 'adventure-works','aw') AS ReplacedString
 FROM HumanResources.Employee;
 
--- |`replicate()`|Repeats a string a particular number if times.|
+-- replicate(): Repeats a string a particular number if times.
 -- REPLICATE(String, Count)
 SELECT FirstName, REPLICATE(FirstName, 5) AS ReplicateFName
 FROM Person.Person;
+
+-- reverse(): Reverses the string while displaying the result
+SELECT FirstName, REVERSE(FirstName) AS ReverseFName
+FROM Person.Person;
+
+-- substring(): Extracts a substring(some characters) from the main string
+-- SUBSTRING (MainString, StartingPosition, Length);
+SELECT TOP 100 LastName, SUBSTRING(LastName, 3, 5) AS ReverseFName
+FROM Person.Person
+ORDER BY LastName;
+
+-- str(): Returns a number as a string while displaying the result
+SELECT ProductID, STR(ProductID) 
+FROM Production.Product;
+
+
 
 
 
