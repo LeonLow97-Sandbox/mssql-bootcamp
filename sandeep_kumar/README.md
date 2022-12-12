@@ -450,6 +450,35 @@ ORDER BY Shelf DESC;
 - Query inside another Query
 	- Can be applied to `SELECT`, `INSERT`, `UPDATE` and `DELETE` statements.
 
+# Implicit JOIN
+
+- Not recommended (OLD).
+- Combines columns from multiple tables
+- This type of join is called as **IMPLICIT JOIN** as we are not using the `JOIN` keyword but are implicitly joining columns of the table.
+
+```sql
+-- Syntax
+SELECT col1, col2, ...
+FROM tableA, tableB, ...
+WHERE condition
+```
+
+# `INNER JOIN`
+
+- Return only matching records from both the tables.
+
+```sql
+-- SYNTAX for INNER JOIN
+SELECT tblA.col1, tblA.col2, ..., tblB.col1, tblB.col2, ...
+FROM tableA tblA
+	INNER JOIN -- can also use `JOIN`
+tableB tblB
+ON tblA.col1 = tblB.col1;
+```
+
+
+
+
 
 
 
