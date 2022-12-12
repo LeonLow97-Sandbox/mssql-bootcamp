@@ -445,7 +445,10 @@ ORDER BY Shelf DESC;
 - Order of Execution
 	- `SELECT --> FROM --> WHERE --> GROUP BY --> HAVING --> ORDER BY`
 
+# SubQuery
 
+- Query inside another Query
+	- Can be applied to `SELECT`, `INSERT`, `UPDATE` and `DELETE` statements.
 
 
 
