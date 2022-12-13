@@ -476,8 +476,56 @@ tableB tblB
 ON tblA.col1 = tblB.col1;
 ```
 
+# `LEFT JOIN`
 
+- Return all record from Left Table and only the matching records from the Right Table.
+- Returns NULL for the other columns on right table if those records are not matched.
+- `LEFT OUTER JOIN` is the same as `LEFT JOIN`.
 
+```sql
+SELECT tblA.col1, tblA.col2,..., tblB.col1, tblB.col2, ...
+FROM tableA tblA
+	LEFT JOIN
+tableB tblB
+ON tblA.col1 = tblB.col1;
+```
+
+# `RIGHT JOIN`
+
+- Return all record from Right Table and only the matching records from Left Table.
+
+```sql
+SELECT tblA.col1, tblA.col2,..., tblB.col1, tblB.col2, ...
+FROM tableA tblA
+	RIGHT JOIN
+tableB tblB
+ON tblA.col1 = tblB.col1;
+```
+
+# `FULL JOIN`
+
+- Combination of LEFT and RIGHT JOIN
+- If a record is only found in the left table and not found in the right table, it returns NULL values for the records in the right table and returns the records of the left table, and vice versa.
+- Same term: `FULL OUTER JOIN`
+
+```sql
+SELECT tblA.col1, tblA.col2,..., tblB.col1, tblB.col2, ...
+FROM tableA tblA
+	FULL JOIN
+tableB tblB
+ON tblA.col1 = tblB.col1;
+```
+
+# `CROSS JOIN`
+
+- Combines each record from one table with each record of another table.
+- Number of rows from 1 table multiply by another table number of rows.
+- Avoid using this.
+
+```sql
+SELECT * FROM table1, table2;
+SELECT * FROM table1 CROSS JOIN table2;
+```
 
 
 
