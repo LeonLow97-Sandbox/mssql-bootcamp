@@ -527,6 +527,26 @@ SELECT * FROM table1, table2;
 SELECT * FROM table1 CROSS JOIN table2;
 ```
 
+# `UNION` and `UNION ALL`
+
+- All the SELECT statements which take part should have same number of columns in the same order.
+- All columns in each SELECT statement should have compatible data types.
+- `UNION/UNION ALL` combines rows from multiple tables.
+
+- `UNION`: Combines multiple SELECT statements and remove the duplicates.
+```sql
+SELECT col1, col2,... FROM tableA WHERE condition
+	UNION
+SELECT col1, col2,... FROM tableB WHERE condition;
+```
+
+- `UNION ALL`: Combines multiple SELECT statements but do NOT remove the duplicates
+```sql
+SELECT col1, col2,... FROM tableA WHERE condition
+	UNION ALL
+SELECT col1, col2,... FROM tableB WHERE condition;
+```
+
 
 
 

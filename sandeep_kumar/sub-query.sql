@@ -90,9 +90,41 @@ FROM
 	GROUP  BY PurchaseOrderID
 	) AS minUnitPricePerOrder;
 
--- ANY Operator: Returns TRUE if any of the value in SubQuery meets the condition
--- ALL Operator: Reutrns TRUE if all the values in SubQuery meets the condition
+-- ANY Operator: Returns TRUE if the operation is true for any of the values in the range in subquery.
+-- ALL Operator: Returns TRUE if all the values in SubQuery meets the condition
 
+SELECT * FROM Purchasing.PurchaseOrderDetail; -- 8845
+SELECT * FROM Purchasing.PurchaseOrderHeader;  -- 4012
+
+-- Return rows where due date is greater than/equal to any of the order dates
+SELECT PurchaseOrderId, DueDate, UnitPrice 
+FROM Purchasing.PurchaseOrderDetail
+WHERE DueDate >= 
+	ANY (SELECT OrderDate
+		FROM Purchasing.PurchaseOrderHeader); -- 8845 records
+
+-- Return rows where due date is equal to any of the order dates
+SELECT * FROM Purchasing.PurchaseOrderHeader;  -- 4012
+SELECT PurchaseOrderId, DueDate, UnitPrice 
+FROM Purchasing.PurchaseOrderDetail
+WHERE DueDate = 
+	ANY (SELECT OrderDate
+		FROM Purchasing.PurchaseOrderHeader); -- 6820 records
+
+-- Return rows where due date is not equal to all of the order dates
+SELECT PurchaseOrderId, DueDate, UnitPrice 
+FROM Purchasing.PurchaseOrderDetail
+WHERE DueDate <>
+	ALL (SELECT OrderDate
+		FROM Purchasing.PurchaseOrderHeader); -- 2025 rows (8845 = 6820 + 2025)
+
+SELECT MIN(UnitPrice)
+FROM Purchasing.PurchaseOrderDetail
+WHERE UnitPrice IN 
+	(SELECT TOP 9 UnitPrice FROM Purchasing.PurchaseOrderDetail ORDER BY UnitPrice ASC);
+
+SELECT UnitPrice FROM Purchasing.PurchaseOrderDetail
+ORDER BY UnitPrice;
 
 
 
