@@ -47,7 +47,7 @@ ORDER BY FullName; -- order by in first select
 
 -- UNION ALL: does not remove duplicates
 --  to sort the results, use ORDER BY
-
+d
 SELECT PurchaseOrderID
 FROM Purchasing.PurchaseOrderDetail
 	UNION ALL
