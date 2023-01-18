@@ -571,6 +571,51 @@ SELECT CustomerID
 FROM Sales.Customer;
 ```
 
+# Numerical Data Types
+
+|Data Type|Description|Storage|Frequency of use|
+|:-:|:-:|:-:|:-:|
+|bit|A data type that can store a single binary digit (0 or 1).|1 byte|Highly used|
+|tinyint|A data type that can store small integers from 0 to 255.|1 byte|Less Used|
+|smallint|A data type that can store integers from -32,768 to 32,767.|2 bytes|Highly used|
+|int|A data type that can store integers from -2,147,483,648 to 2,147,483,647.|4 bytes|Highly used|
+|bigint|A data type that can store large integers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.|8 bytes|Less used|
+|decimal(t,r)|A data type that can store decimal numbers with a precision of up to t digits and a scale of up to r digits.|5 - 17 bytes|Highly used|
+|smallmoney|A data type that can store small monetary values from -214,748.3648 to 214,748.3647.|4 bytes|Less used|
+|money|A data type that can store monetary values from -922,337,203,685,477.5808 to 922,337,203,685,477.5807.|8 bytes|Highly used|
+|float(n)|A data type that can store floating-point numbers with a precision of up to 7 digits for 4 bytes and 15 digits for 8 bytes.|4 or 8 bytes|Highly used|
+|real|A data type that can store floating-point numbers with a precision of up to 7 digits.|4 bytes|Less Used|
+
+# String Data Types
+
+|Data Type|Description|Storage|Frequency of use|
+|:-:|:-:|:-:|:-:|
+|`char(n)`|A data type that can store fixed-length strings of n characters.|Fixed memory depends on the value of n|Highly used|
+|`varchar(n)`|A data type that can store variable-length strings of up to n characters.|2 bytes + number of characters|Highly used|
+|`text`|A data type that can store large variable-length strings of up to 2^31-1 characters.|4 bytes + number of characters|Less used|
+|`nchar(n)`|A data type that can store fixed-length Unicode strings of n characters.|2 times the fixed length i.e., 2*n bytes|Highly used|
+|`nvarchar(n)`|A data type that can store variable-length Unicode strings of up to n characters.|2*n + 2 bytes|Highly used|
+|`image`|A data type that can store binary data such as images, documents, etc.|depends on the number of bytes used|Rarely used|
+
+# Data Data Types
+
+|Data Type|Description|Storage|Frequency of use|
+|:-:|:-:|:-:|:-:|
+|`datetime`|A data type that can store both date and time values.|8 bytes|Highly used|
+|`date`|A data type that can store date values.|3 bytes|Highly used|
+|`time`|A data type that can store time values.|3 - 5 bytes|Less used|
+|`timestamp`|A data type that can store a unique number that gets updated every time a row gets created or modified.|8 bytes|Less used|
+
+# Other Data Types
+
+|Data Type|Description|Frequency of use|
+|:-:|:-:|:-:|:-:|
+|`uniqueidentifier`|This stores a 16 byte GUID (globally unique identifier)|Highly used|
+|`xml`|Stores xml type data|Rarely used|
+
+
+
+
 
 
 
