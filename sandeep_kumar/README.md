@@ -547,6 +547,32 @@ SELECT col1, col2,... FROM tableA WHERE condition
 SELECT col1, col2,... FROM tableB WHERE condition;
 ```
 
+# `INTERSECT`
+
+- Combines distinct rows from multiple tables that are common
+
+```sql
+SELECT ProductSubCategoryID
+FROM Production.Product
+	INTERSECT
+SELECT ProductSubCategoryID
+FROM Production.ProductSubcategory;
+```
+
+# `EXCEPT`
+
+- Compares records from multiple tables and returns only distinct rows from 1st query that are not present in other remaining queries.
+
+```sql
+SELECT SalesOrderID
+FROM Sales.SalesOrderDetail
+	EXCEPT
+SELECT CustomerID
+FROM Sales.Customer;
+```
+
+
+
 
 
 
