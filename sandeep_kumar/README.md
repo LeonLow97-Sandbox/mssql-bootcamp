@@ -613,9 +613,55 @@ FROM Sales.Customer;
 |`uniqueidentifier`|This stores a 16 byte GUID (globally unique identifier)|Highly used|
 |`xml`|Stores xml type data|Rarely used|
 
+# Create Database
 
+- `CREATE DATABASE <database_name>`
+- `DROP DATABASE <database_name>`
 
+# Create Table
 
+```sql
+-- Create table without constraints
+CREATE TABLE Stores (
+	StoreId INT IDENTITY(1,1), -- autoincrement field (start with 1, increment by 1)
+	StoreNumber VARCHAR(50),
+	PhoneNumber CHAR(14),
+	Email VARCHAR(50),
+	Address VARCHAR(120),
+	City VARCHAR(40),
+	State VARCHAR(10),
+	ZipCode INT
+);
+
+-- Create table under retail schema
+CREATE TABLE retail.Stores (
+	StoreId INT IDENTITY(1,1), -- autoincrement field (start with 1, increment by 1)
+	StoreNumber VARCHAR(50),
+	PhoneNumber CHAR(14),
+	Email VARCHAR(50),
+	Address VARCHAR(120),
+	City VARCHAR(40),
+	State VARCHAR(10),
+	ZipCode INT
+);
+```
+
+### Types of Constraints in MS SQL Server
+
+|Constraints|Description|
+|:-:|:-:|
+|`NOT NULL`|Imposes a rule that a column(s) will not contain NULL values.|
+|`UNIQUE`|Imposes a rule that each record of a column on which UNIQUE constraint is applied will NOT contain Unique values.|
+|`CHECK`|Imposes a CHECK on a table to contain only those values which passes the condition test.|
+|`DEFAULT`|This constraint sets a default value for a column when no value is specified or the value is NULL|
+|`PRIMARY KEY`|This constraint uniquely identifies each record in a table and cannot contain NULL values|
+|`FOREIGN KEY`|This constraint references a primary key of another table and is used to establish a link between the data in two tables|
+
+### Create Table Constraints
+
+```sql
+
+```
 
 
 
